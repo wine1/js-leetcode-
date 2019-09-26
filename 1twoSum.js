@@ -4,8 +4,6 @@
  * @return {number[]}
  */
 
-// 打印出来的方法
-const log = console.log.bind(console);
 
 var twoSum = function(nums, target) {
   var ret = [];
@@ -18,7 +16,7 @@ var twoSum = function(nums, target) {
 
     exist[nums[i]] = i + 1;
   }
-  log(ret);
+  log(ret,exist);
   return ret;
 };
 
