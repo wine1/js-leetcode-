@@ -8,15 +8,6 @@
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-//   var str = x.toString();
-//   var arr = str.split("");
-//   var len=arr.length;
-//   for (var i = 0; i < parseInt(len / 2); i++) {
-//     if(arr[i] == arr[len-i-1]){
-//     }else {
-//       log("false");
-//     }
-//   }
 
   // 负数的第一位带有负号'-'，所以一定不是回文数
   // 长度超过一位的数字，第一位肯定不是 0，因此末尾是 0，则一定不是回文数
@@ -32,4 +23,4 @@ var isPalindrome = function(x) {
   return x == revertedNumber || x == revertedNumber / 10;
 };
 log(isPalindrome(12021));
-// log(isPalindrome(-1221));
+log(isPalindrome(-1221));

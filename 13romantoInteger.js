@@ -13,7 +13,6 @@ var romanToInt = function(s) {
   var arr = s.split("");
   var num = 0;
   for (var i = 0; i < arr.length; ++i) {
-    log("a:" + arr[i], "a2:" + arr[i + 1]);
     // 在js中，数组的长度是动态的，换言之就是可以随意向数组中添加值，但没有赋值的情况下默认值是undefined,因此如果少了下面这一步判断，最后一位就会进入到减法中
     if (arr[i + 1] != undefined) {
       if (getVal(arr[i]) < getVal(arr[i + 1])) {
