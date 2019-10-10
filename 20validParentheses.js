@@ -9,6 +9,7 @@
  * @param {string} s
  * @return {boolean}
  */
+// 用栈来写 思路有了 到底咋写 知道咋写了 就是不想写 懒
 var isValid = function(s) {
   var arr = s.split("");
   var stack = [];
