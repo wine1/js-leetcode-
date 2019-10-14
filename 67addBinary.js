@@ -8,7 +8,7 @@
 /**
  * @param {string} a
  * @param {string} b
- * @return {string}
+ * @return {string} 
  */
 
 //  js中的隐式转换很磨人
