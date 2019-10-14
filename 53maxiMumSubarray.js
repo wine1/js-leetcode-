@@ -11,7 +11,7 @@
  */
 var maxSubArray = function(nums) {
     var max;
-    var sum;
+    var sum=[];
     for(var i=0;i<nums.length;i++) {
         for(var j=i;j<nums.length;j++) {
             sum[j]=dum[j]+nums[j];
