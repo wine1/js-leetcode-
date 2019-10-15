@@ -18,8 +18,9 @@ var isPalindrome = function(x) {
   while (x > revertedNumber) {
     revertedNumber = revertedNumber * 10 + parseInt(x % 10);
     x = parseInt(x/10);
+    log(x,revertedNumber);
   }
-  log(revertedNumber,x);
+  // log(revertedNumber,x);
   return x == revertedNumber || x == revertedNumber / 10;
 };
 log(isPalindrome(12021));

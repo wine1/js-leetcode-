@@ -9,6 +9,9 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+
+//  动态规划
 var maxSubArray = function(nums) {
     var max=nums[0];
     var sum=max;

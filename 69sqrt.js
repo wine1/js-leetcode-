@@ -9,7 +9,7 @@
  * @param {number} x
  * @return {number}
  */
-var mySqrt = function(x) {
+var mySqrt = x => {
   let left = 0,
     right = x;
   let mid = (0 + x) / 2;
@@ -17,13 +17,13 @@ var mySqrt = function(x) {
     if (mid * mid > x) {
       right = mid - 1;
       mid = parseInt((parseInt(left) + parseInt(right)) / 2);
-    //   log(mid);
+      //   log(mid);
     } else if (mid * mid < x) {
       left = mid + 1;
       mid = parseInt((parseInt(left) + parseInt(right)) / 2);
-    //   log(mid);
-    }else {
-        return mid;
+      //   log(mid);
+    } else {
+      return mid;
     }
   }
   return mid;
