@@ -12,20 +12,24 @@
 
 
 //  动态规划
-var maxSubArray = function(nums) {
-    var max=nums[0];
-    var sum=max;
-    for(var i=0;i<nums.length;i++) {
-        for(var j=i;j<nums.length;j++) {
-            sum=parseInt(sum)+parseInt(nums[j]);
-            if(max<sum) {
-                max=sum;
-            }else {
-                continue;
-            }
+var maxSubArray = function (nums) {
+    var dp = [0];
+    var max = nums[0];
+    for (var i = 1; i < nums.length; i++) {
+        dp[0] = nums[0];
+        if (dp[i - 1] > 0) {
+            dp[i] = dp[i - 1] + nums[i];
+        } else {
+            dp[i] = nums[i];
+        }
+        if (max > dp[i]) {
+            continue;
+        } else {
+            max = dp[i];
         }
     }
+    log(dp);
     return max;
 };
 
-log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
+log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
