@@ -17,7 +17,7 @@ var isValid = function(s) {
     if (arr[i] === "(" || arr[i] === "{" || arr[i] === "[") {
       stack.push(arr[i]);
     } else {
-      if (stack.isEmpty()) {
+      if (stack.length===0) {
         log("false");
         return false;
       }

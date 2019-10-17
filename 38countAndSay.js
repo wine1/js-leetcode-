@@ -50,12 +50,13 @@
 // };
 
 // 那就暴力写吧，要有多暴力，就有多暴力
+// 返回值的位置错了导致多重循环然后结果出错。。。打了许多断点才找到问题
 let countAndSay = n => {
     let count = 1,
       num;
     let arr = [];
     if (n === 1) {
-      str = "1";
+     return str = "1";
     } else {
       for (let i = 1; i < n; i++) {
         arr = str.split("");
@@ -67,13 +68,15 @@ let countAndSay = n => {
             continue;
           } else {
             str2 = str2 + count + num;
+            // log("show"+str2,count,num);
             count = 1;
           }
         }
         str=str2;
+        // log("str",str,i);
+        return str;
       }
     }
-    return str;
   };
   log(countAndSay(1));
   log(countAndSay(2));
