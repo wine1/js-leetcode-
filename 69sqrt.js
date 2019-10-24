@@ -9,6 +9,8 @@
  * @param {number} x
  * @return {number}
  */
+
+//  leetcode没跑过
 var mySqrt = x => {
   let left = 0,
     right = x;
