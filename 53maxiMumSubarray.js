@@ -12,6 +12,7 @@
 
 
 //  动态规划
+// dp[i]为数组前n项的最大子序列和，而dp[i]=dp[i-1]+nums[i] 即结果取决于dp[i-1]
 var maxSubArray = function (nums) {
     var dp = [0];
     var max = nums[0];

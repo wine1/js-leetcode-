@@ -66,6 +66,7 @@ let countAndSay = n => {
             count++;
             continue;
           } else {
+              log(count,num);
             str2 = str2 + count + num;
             count = 1;
           }
@@ -79,5 +80,5 @@ let countAndSay = n => {
   log(countAndSay(2));
   log(countAndSay(3));
   log(countAndSay(4));
-  log(countAndSay(7));
+//   log(countAndSay(7));
   // @lc code=end
