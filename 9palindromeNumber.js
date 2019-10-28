@@ -23,5 +23,7 @@ var isPalindrome = function(x) {
   // log(revertedNumber,x);
   return x == revertedNumber || x == revertedNumber / 10;
 };
+// 有bug待修复 121时实际结果与与其不符
+log(isPalindrome(121));
 log(isPalindrome(12021));
 log(isPalindrome(-1221));
