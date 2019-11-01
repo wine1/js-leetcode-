@@ -11,7 +11,7 @@
  */
 
 //  暴力破解
-// 这道题的这种暴力解法行不通，因为数字会变得很大比如n=30时结果为2.6525285981219103e+32 尾数中0的个数不符合预期
+// 这道题的这种暴力解法行不通，因为数字会变得很大比如n=30时结果为2.6525285981219103e+32 尾数中0的个数不符合预期 而且时间复杂度超了
 // var trailingZeroes = function (n) {
 //     let res = 1;
 //     for (let i = 1; i < n + 1; i++) {
@@ -31,38 +31,12 @@
 //     return count;
 // };
 
-
-// 分解因子 乘项可以分解成多少个带有5和2和超过个位数的尾数0
+// 分解因子 乘项可以分解成多少个带有5的
 let trailingZeroes = n => {
-    let count=0;
-    for(let i=1;i<n+1;i++) {
-        // let two=parsent(i%2);
-        let five=i%5;
-        let zero=i%10;
-        log(i,five,zero);
+  
 
-        if(five===0&&zero!==0){
-            count++;
-        }else if(zero===0){
-            let str=i.toString();
-            let m=str.length-1;
-            count+=m;
-        }
-
-        // if(five===0 || zero===0) {
-        //     if(zero===0) {
-        //         let str=i.toString();
-        //         let m=str.length-1;
-        //         count+=m;
-        //     }else {
-        //         count++;
-        //     }
-        // }else {
-        //     continue;
-        // }
-    }
-    return count;
-}
+  return count;
+};
 // @lc code=end
 
 log(trailingZeroes(3));
