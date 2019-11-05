@@ -21,20 +21,20 @@
 //     }
 //     log(nums);
 //     return nums;
-    
+
 // };
 
 // 上述写法报错的原因分析：
 // js中所有的函数的参数都是按<strong>值传递</strong>的，也就是说把函数外部的值复制给函数内部的参数，就相当于把值从一个变量复制到另一个变量 如下用例输出的结果会是[1,2,3,4,5,6]
 
-    var rotate = function(nums, k) {
- k %= nums.length;
-  var tmp = [];
-  if (k)
-    tmp = nums.slice(-k);
-  nums.splice(-k, k);
- 
-  Array.prototype.unshift.apply(nums, tmp);
 
+// 注意需要考虑k>sums.length的情况
+var rotate = function(nums, k) {
+  k %= nums.length;
+  var tmp = [];
+  if (k) tmp = nums.slice(-k);
+  nums.splice(-k, k);
+
+  Array.prototype.unshift.apply(nums, tmp);
 };
-log(rotate([1,2,3,4,5,6,7],3));
+log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
