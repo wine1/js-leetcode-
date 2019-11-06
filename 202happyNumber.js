@@ -10,17 +10,9 @@
  * @return {boolean}
  */
 
-//  先用个暴力的方法，我想总是会有大神写出神奇的简单写法
+//  有解析说这是一道链表题，惊了个呆 不会写
 
-// var isHappy = function(n) {
-//   while (n / 10 > 0 && n != 1) {
-//     let y = n % 10;
-//     n=n/10;
-//     let res;
-//     res = res + y * y;
-//     log(res);
-//   }
-// };
+
 // @lc code=end
 
 log(isHappy(19));
