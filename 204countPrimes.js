@@ -28,3 +28,4 @@ var countPrimes = function (n) {
   };
 // @lc code=end
 
+log(countPrimes(10));
