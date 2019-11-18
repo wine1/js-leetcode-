@@ -16,6 +16,7 @@ var reverseString = function(s) {
     // temp = s[i];
     // s[i] = s[s.length - i - 1];
     // s[s.length - i - 1] = temp;
+    // ES6中解构赋值的应用
     [s[i],s[s.length-i-1]]=[s[s.length-i-1],s[i]];
   }
   return s;
