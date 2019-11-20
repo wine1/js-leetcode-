@@ -10,12 +10,18 @@
  * @return {boolean}
  */
 var isPerfectSquare = function(num) {
-    let temp;
-    if(num===0) {
-        return false;
-    }else {
-        
+  if (num === 0) {
+    return false;
+  } else if (num === 1) {
+    return true;
+  } else {
+    for (let i = 0; i < num / 2; i++) {
+      if (i * i === num) {
+        return true;
+      }
     }
+    return false;
+  }
 };
 // @lc code=end
 
