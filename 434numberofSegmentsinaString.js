@@ -10,15 +10,21 @@
  * @return {number}
  */
 var countSegments = function(s) {
-    
-    let arr=s.split(' ');
-    if(s.length === 0 ||arr[0]==='') {
-        return 0;
+  let arr = s.split(" ");
+  let n = 0;
+  if (s.length === 0) {
+    return 0;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== "") {
+      n++;
     }
-    log(arr)
-    return arr.length;
+  }
+  return n;
 };
 // @lc code=end
 
-log(countSegments("Hello, my name is John"));//5
-log(countSegments("       "));//8
+log(countSegments("Hello, my name is John")); //5
+log(countSegments("       ")); //8
+log(countSegments("Of all the gin joints in all the towns in all the world,   ")
+); //13
