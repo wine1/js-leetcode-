@@ -10,13 +10,12 @@ var twoSum = function(nums, target) {
   var exist = {};
   for (var i = 0; i < nums.length; i++) {
     if (typeof exist[target - nums[i]] !== "undefined") {
-      ret.push(exist[target - nums[i]]);
-      ret.push(i + 1);
+      ret.push(exist[target - nums[i]]-1);
+      ret.push(i);
     }
 
     exist[nums[i]] = i + 1;
   }
-  log(ret,exist);
   return ret;
 };
 
