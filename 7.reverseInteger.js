@@ -1,10 +1,16 @@
+/*
+ * @lc app=leetcode.cn id=7 lang=javascript
+ *
+ * [7] 整数反转
+ */
+
+// @lc code=start
 /**
  * @param {number} x
  * @return {number}
  */
-// 这样写好像比较复杂，用了大量的变量，后面看看能不能再优化一下，
-// js是没有int类型的，但我是为了用js写算法才写算法，所以强行用js实现，后面专门看数据结构的时候可能会再用java写
-var reversea = function(x) {
+var reverse = function(x) {
+
   var arr = [];
   var ans;
   var str = x.toString();
@@ -22,9 +28,14 @@ var reversea = function(x) {
     var f = arr.reverse();
     ans = f.join("");
   }
-  log(ans);
+    if (ans < -Math.pow(2, 31) || ans > Math.pow(2, 31) - 1) {
+        ans=0;
+    }
+    
+  console.log(ans);
   return ans;
-};
-reversea(-12345);
-reversea(1245);
-reversea(150);
+  };
+  // @lc code=end
+  reverse(-12345);
+  reverse(1245);
+  reverse(150);
