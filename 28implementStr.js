@@ -30,5 +30,53 @@ var strStr = function(haystack, needle) {
   }
   return number;
 };
+
+
+
+
+/*
+ * @lc app=leetcode.cn id=28 lang=javascript
+ *
+ * [28] 实现 strStr()
+ */
+
+// @lc code=start
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+  let res = -1,
+    len1 = haystack.length,
+    len2 = needle.length;
+  if (needle.length === 0 || needle === " ") {
+    return 0;
+  } else if (len1 < len2) {
+    return -1;
+  } else {
+    for (let i = 0; i < len1; i++) {
+      if (haystack[i] === needle[0]) {
+        res = i;
+        for (let j = 0; j < len2; j++) {
+          if (haystack[i + j] !== needle[j]) {
+            res = -1;
+            break;
+          }
+        }
+        if (res !== -1) {
+          return res;
+        }
+      }
+    }
+    return res;
+  }
+};
+
+// strStr("hello", "ll");
+// strStr("aaaaa", "bba");
+strStr("mississippi", "issip");
+// @lc code=end
+
 log(strStr('hello','ll'));
 log(strStr('aaaaa','bba'));

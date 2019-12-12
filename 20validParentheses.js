@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=20 lang=javascript
+ * @lc app=leetcode.cn id=20 lang=javascript
  *
- * [20] Valid Parentheses
+ * [20] 有效的括号
  */
 
 // @lc code=start
@@ -9,22 +9,47 @@
  * @param {string} s
  * @return {boolean}
  */
-// 用栈来写 思路有了 到底咋写 知道咋写了 就是不想写 懒
 var isValid = function(s) {
-  var arr = s.split("");
-  var stack = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === "(" || arr[i] === "{" || arr[i] === "[") {
+  let stack = [];
+  let arr = s.split("");
+  if ((s === " " || s.length===0)) {
+    return true;
+  } else if (arr.length < 2) {
+    return false;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === " ") {
+      continue;
+    } else if (arr[i] === "{" || arr[i] === "[" || arr[i] === "(") {
       stack.push(arr[i]);
+      //   console.log(arr[i])
     } else {
-      if (stack.length===0) {
-        log("false");
+      let temp = stack[stack.length - 1];
+      //   console.log("top", temp,arr[i]);
+      if (
+        (temp === "(" && arr[i] === ")") ||
+        (temp === "[" && arr[i] === "]") ||
+        (temp === "{" && arr[i] === "}")
+      ) {
+        stack.pop();
+      } else {
         return false;
       }
     }
   }
-  log("true");
-  return true;
+  if(stack.length===0) {
+    return true;
+  }else {
+      return false;
+  }
 };
-isValid("()[]{}");
-isValid("([)]");
+
+console.log(isValid(" "));
+console.log(isValid("("));
+console.log(isValid("(("));
+console.log(isValid("()"));
+console.log(isValid("( )")); //true
+console.log(isValid("()[]{}")); //true
+console.log(isValid("(]"));
+console.log(isValid("([)]"));
+console.log(isValid("{[]}"));
