@@ -7,15 +7,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Electron Main",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-            "program": "${workspaceFolder}/main.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\1twoSum.js"
+            "program": "${file}",
+            "sourceMaps": true
         }
     ]
 }
