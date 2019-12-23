@@ -26,7 +26,17 @@ let climbStairs = n => {
       return climbStairs(n - 1) + climbStairs(n - 2);
     }
   };
-  // @lc code=end
+
+// 递归会超时，动态规划不会
+  var climbStairs = function(n) {
+    let dp = new Array()
+    dp[1] = 1
+    dp[2] = 2
+    for (let i = 3; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2]
+    }
+    return dp[n]
+};  // @lc code=end
   log(climbStairs(3));
   log(climbStairs(5));
   

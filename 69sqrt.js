@@ -14,7 +14,7 @@
 var mySqrt = x => {
   let left = 0,
     right = x;
-  let mid = (0 + x) / 2;
+  let mid = parseInt((0 + x) / 2);
   while (left <= right) {
     if (mid * mid > x) {
       right = mid - 1;

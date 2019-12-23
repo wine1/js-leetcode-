@@ -43,6 +43,6 @@ let plusOne = digits => {
 };
 // @lc code=end
 
-log(plusOne([1, 2, 3]));
-log(plusOne([9, 9, 9]));
-log(plusOne([1, 2, 9]));
+console.log(plusOne([1, 2, 3]));
+console.log(plusOne([9, 9, 9]));
+console.log(plusOne([1, 2, 9]));
