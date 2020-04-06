@@ -26,7 +26,7 @@ var addBinary = function(a, b) {
     } else if (arr2[i] === undefined) {
       arr2[i] = 0;
     }
-    // log(arr1[i], arr2[i],parseInt(arr1[i]) + parseInt(arr2[i]) + carry);
+    //console.log(arr1[i], arr2[i],parseInt(arr1[i]) + parseInt(arr2[i]) + carry);
     if (parseInt(arr1[i]) + parseInt(arr2[i]) + carry === 0) {
       carry = 0;
       arr3[i]=0;

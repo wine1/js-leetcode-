@@ -13,6 +13,6 @@ var firstUniqChar = function(s) {
 
 };
 // @lc code=end
-// log(firstUniqChar('leetcode'));
-// log(firstUniqChar('loveleetcode'));
+//console.log(firstUniqChar('leetcode'));
+//console.log(firstUniqChar('loveleetcode'));
 log(firstUniqChar("cc"));

@@ -13,7 +13,7 @@
 //  需要排除末尾有空格的情况
 var lengthOfLastWord = function(s) {
   var arr = s.split("");
-//   log(arr);
+//   console.log(arr);
   var count = 0;
   for (var i = arr.length - 1; i >= 0; i--) {
     if (arr[i] === " ") {
@@ -29,5 +29,5 @@ var lengthOfLastWord = function(s) {
   return count;
 };
 
-log(lengthOfLastWord("Hello World"));
-log(lengthOfLastWord("Hello World "));
+console.log(lengthOfLastWord("Hello World"));
+console.log(lengthOfLastWord("Hello World "));

@@ -30,5 +30,5 @@ var removeDuplicates = function(nums) {
 
 var num = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
 var num2 = [1, 1, 2];
-log(removeDuplicates(num));
-log(removeDuplicates(num2));
+console.log(removeDuplicates(num));
+console.log(removeDuplicates(num2));

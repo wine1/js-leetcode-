@@ -42,5 +42,5 @@ let deleteDuplicates = head=> {
 };
 // @lc code=end
 
-log(deleteDuplicates('1->1->2'));
-log(deleteDuplicates('1->1->2->3->3'));
+console.log(deleteDuplicates('1->1->2'));
+console.log(deleteDuplicates('1->1->2->3->3'));

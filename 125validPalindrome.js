@@ -11,7 +11,7 @@
  */
 var isPalindrome = function(s) {
     let arr=s.split('');
-    log(arr);
+   console.log(arr);
     for(let i=0;i<arr.length;i++) {
         let regex=/\w/g;
         let left=0,right=arr.length-1;

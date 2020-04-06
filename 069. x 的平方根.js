@@ -19,11 +19,11 @@ var mySqrt = x => {
     if (mid * mid > x) {
       right = mid - 1;
       mid = parseInt((parseInt(left) + parseInt(right)) / 2);
-      //   log(mid);
+      //  console.log(mid);
     } else if (mid * mid < x) {
       left = mid + 1;
       mid = parseInt((parseInt(left) + parseInt(right)) / 2);
-      //   log(mid);
+      //  console.log(mid);
     } else {
       return mid;
     }
