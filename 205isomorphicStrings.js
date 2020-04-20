@@ -32,7 +32,7 @@ var isIsomorphic = function(s, t) {
       return false;
     }
   }
-//   log(hasha, hashb);
+//  console.log(hasha, hashb);
   return true;
 };
 // @lc code=end

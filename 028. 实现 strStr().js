@@ -78,5 +78,5 @@ var strStr = function(haystack, needle) {
 strStr("mississippi", "issip");
 // @lc code=end
 
-log(strStr('hello','ll'));
-log(strStr('aaaaa','bba'));
+console.log(strStr('hello','ll'));
+console.log(strStr('aaaaa','bba'));

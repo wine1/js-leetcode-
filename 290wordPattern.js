@@ -22,7 +22,7 @@ var wordPattern = function(pattern, str) {
     }
   }
 
-  log(arr1, arr2, hash1, hash2);
+ console.log(arr1, arr2, hash1, hash2);
   return true;
 };
 // @lc code=end

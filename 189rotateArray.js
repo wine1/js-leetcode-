@@ -17,9 +17,9 @@
 //     for(let i=0;i<k;i++) {
 //     let a=nums.splice(-1,1);
 //     nums=a.concat(nums);
-//     log(nums);
+//    console.log(nums);
 //     }
-//     log(nums);
+//    console.log(nums);
 //     return nums;
 
 // };

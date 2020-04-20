@@ -37,6 +37,6 @@ let climbStairs = n => {
     }
     return dp[n]
 };  // @lc code=end
-  log(climbStairs(3));
-  log(climbStairs(5));
+ console.log(climbStairs(3));
+ console.log(climbStairs(5));
   

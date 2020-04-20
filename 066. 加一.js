@@ -17,7 +17,7 @@
 // let plusOne = digits => {
 //   let str1 = digits.join("");
 //   let str2 = str1.toString();
-//   log(digits, str2);
+//  console.log(digits, str2);
 //   let num = parseInt(str2);
 //   num = num + 1;
 //   let str3 = num.toString();
