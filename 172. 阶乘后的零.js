@@ -33,13 +33,18 @@
 
 // 分解因子 乘项可以分解成多少个带有5的
 let trailingZeroes = n => {
-  
+  let count = 0;
+  let i=5;
+  while (i<=n) {
+    
+
+  }
 
   return count;
 };
 // @lc code=end
 
-log(trailingZeroes(3));
-log(trailingZeroes(5));
-log(trailingZeroes(10));
-log(trailingZeroes(30));
+console.log(trailingZeroes(3));
+console.log(trailingZeroes(5));
+console.log(trailingZeroes(10));
+console.log(trailingZeroes(30));
