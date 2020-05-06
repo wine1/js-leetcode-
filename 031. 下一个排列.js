@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 75c54de50b29e881d07352cd7009454927d18f8b
 // 实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
 
 // 如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
@@ -13,8 +9,6 @@
 // 3,2,1 → 1,2,3
 // 1,1,5 → 1,5,1
 
-<<<<<<< HEAD
-=======
 /**
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
@@ -47,4 +41,3 @@ var nextPermutation = function(nums) {
     nums[i] = nums[j];
     nums[j] = t;
   }
->>>>>>> 75c54de50b29e881d07352cd7009454927d18f8b
