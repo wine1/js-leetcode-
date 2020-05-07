@@ -32,15 +32,14 @@
 // };
 
 // 分解因子 乘项可以分解成多少个带有5的
-let trailingZeroes = n => {
-  let count = 0;
-  let i=5;
-  while (i<=n) {
-    
-
+// 有多少5 尾数中就会有多少0
+var trailingZeroes = function(n) {
+  let sum = 0;
+  while (n > 0) {
+    sum += Math.floor(n / 5);
+    n = Math.floor(n / 5);
   }
-
-  return count;
+  return sum;
 };
 // @lc code=end
 
