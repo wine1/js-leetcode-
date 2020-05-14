@@ -29,6 +29,7 @@ var twoSum = function(nums, target) {
     }
 
     exist[nums[i]] = i + 1;
+    console.log(exist)
   }
   return ret;
 };
