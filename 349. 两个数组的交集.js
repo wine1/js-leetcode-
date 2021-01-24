@@ -32,8 +32,6 @@ var intersection = function(nums1, nums2) {
 };
 
 
-
-
 // 利用哈希集合值唯一的特性。
 
 // var intersection = function(nums1, nums2) {
@@ -50,5 +48,5 @@ var intersection = function(nums1, nums2) {
 
 // @lc code=end
 
-log(intersection([1, 2, 2, 1], [2, 2])); //2
-log(intersection([4, 9, 5], [9, 4, 9, 8, 4])); //9,4
+console.log(intersection([1, 2, 2, 1], [2, 2])); //2
+console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4])); //9,4
