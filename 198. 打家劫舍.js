@@ -11,7 +11,7 @@
  */
 
 // 因缺思厅  又是一道动态规划~
-// 如果抢劫sums[i]位，最大抢劫收益dp[i]为dp[i-2]+dp[i] 不抢就不抢呗 dp[i]=dp[i-1]
+// 如果抢劫sums[i]位，最大抢劫收益dp[i]为dp[i-2]+dp[i] 不抢就 dp[i]=dp[i-1]
 // 考虑边界条件，坑啊 比如nums为空
 var rob = function(nums) {
   if (nums.length === 0) {
