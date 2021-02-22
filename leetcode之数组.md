@@ -13,3 +13,5 @@
 
 3. 子数组类
 
+声明二维数组
+    let res = new Array(m).fill(0).map(() => new Array(n).fill(0));
