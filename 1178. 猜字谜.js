@@ -19,13 +19,10 @@
                 
             }
         }
-     
-
     }
     // console.log('newWords',newWords)
     for (let i = 0; i < m; i++) {
         let first = puzzles[i].slice(0,1)
-
     }
     return resArray
 };
