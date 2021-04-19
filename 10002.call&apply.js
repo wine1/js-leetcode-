@@ -35,9 +35,10 @@ Function.prototype.call2 = function (context) {
     context.fn = this;
     var args = [];
     for (var i = 1, len = arguments.length; i < len; i++) {
-        args.push('arguments[' + i + ']');
+        args.push('arguments[' + i + ']' );
     }
-    eval('context.fn(' + args + ')');
+    // eval('context.fn(' + args + ')'); //es3
+    // context.fn(arguments[1],arguments[2]) //es5
     delete context.fn;
 }
 
@@ -52,7 +53,7 @@ function bar(name, age) {
     console.log(this.value);
 }
 
-bar.call2(foo, 'kevin', 18);
+bar.call2(foo, 'kevin', '18');
 // kevin
 // 18
 // 1
@@ -81,25 +82,3 @@ function test(name, age) {
 }
 test.apply1(obj, ['name', 'age'])
 console.log(123)
-
-// bind
-Function.prototype.bind1 = function (context) {
-
-    if (typeof this !== "function") {
-      throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
-    }
-
-    var self = this;
-    var args = Array.prototype.slice.call(arguments, 1);
-
-    var fNOP = function () {};
-
-    var fBound = function () {
-        var bindArgs = Array.prototype.slice.call(arguments);
-        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
-    }
-
-    fNOP.prototype = this.prototype;
-    fBound.prototype = new fNOP();
-    return fBound;
-}

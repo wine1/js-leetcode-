@@ -8,7 +8,6 @@
 //         func()
 //     }
 // }
-
 // newSetTimeInterval(1000,()=>{console.log(123)})
 
 
