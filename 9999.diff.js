@@ -5,10 +5,13 @@ const FUNCTIONTYPE = '[object Function]'
 function diff(current, pre) {
     const result = {}
     syncKeys(current, pre)
+    console.log('synckeys',current,pre)
     _diff(current, pre, '', result)
+    console.log('result',result)
     return result
 }
 
+/** 同步所有 key 到当前 将新的对象中去除的结点 值置为null,key 主要是为了检测 array 中删除的元素或者 obj 中删除的 key */
 function syncKeys(current, pre) {
     if (current === pre) return
     const rootCurrentType = type(current)
@@ -38,6 +41,7 @@ function _diff(current, pre, path, result) {
     const rootCurrentType = type(current)
     const rootPreType = type(pre)
     if (rootCurrentType == OBJECTTYPE) {
+        console.log(123,current,pre)
         if (rootPreType != OBJECTTYPE || Object.keys(current).length < Object.keys(pre).length && path !== '') {
             setResult(result, path, current)
         } else {
@@ -90,7 +94,7 @@ function _diff(current, pre, path, result) {
         setResult(result, path, current)
     }
 }
-
+/** 记录对象路径 局部更新数据 */
 function concatPathAndKey(path, key) {
     return key.includes('.')
         ? path + `["${key}"]`
@@ -98,6 +102,7 @@ function concatPathAndKey(path, key) {
 }
 
 function setResult(result, k, v) {
+    // console.log(k)
     const t = type(v)
     if (t != FUNCTIONTYPE) {
         //if (t != OBJECTTYPE && t != ARRAYTYPE) {
@@ -108,6 +113,7 @@ function setResult(result, k, v) {
     }
 }
 
+/**获取对象类型 */
 function type(obj) {
     return Object.prototype.toString.call(obj)
 }
@@ -121,3 +127,14 @@ diff({
 })
 
 // { "a": 1, "b": 2, "c": "str", "d.e[0]": 2, "d.e[1].a": 4, "d.e[2]": 5, "f": true, "h": [1], "g.a": [1, 2], "g.j": 111, "g.i": null, "k": null }
+console.log(123)
+
+//  if Object
+
+
+
+//  else cur===Array && pre!==Array setresult
+//         cur.length < pre.length setResult
+//         递归遍历
+
+//  else 值改变 直接记录 setresult
