@@ -1,80 +1,18 @@
-// // class Parent {
-// //     constructor(name){
-// //         this.name=name
-// //     }
-// //     getName() {
-// //         return this.name
-// //     }
-// // }
+// 处理传递的图片的尺寸比例
+let url= "https://gbrestest.dfcfw.com/Files/picture/20210527/2245E3FD9D613F0BE755ECFBA8801FDA_w2500h500.jpg"
 
-// // let a=new Parent('dasiy')
-// // console.log(a.getName())
 
-// // class Child extends Parent {
-// //     constructor(name,sex) {
-// //         super(name)
-// //         this.sex=sex
-// //     }
-// //     getSex() {
-// //         return this.sex
-// //     }
-// // }
-
-// // let b=new Child('mickey','man')
-// // console.log(b.getName())
-// // console.log(b.getSex())
-
-// // 发布订阅
-// class eventhub{
-//     constructor(){
-//         this.bus=[]
-//     }
-//     on(name,cb){
-//         if(this.bus.indexOf(name)===-1) {
-//             this.bus.push({name,cb})
-//         }
-//     }
-//     emit(name){
-//         if(this.bus.indexOf(name)===-1) {
-//             this.bus.forEach((item)=>{
-//                 if(item.name===name) {
-//                     item.cb()
-//                 }
-//             })
-//         }
-//     }
-//     off(name,cb) {
-//         if(this.bus.indexOf(name)===-1) {
-//             this.bus.splice(this.bus.indexOf(name),1)
-//             cb()
-//         }
-//     }
-// }
-
-// let a=new eventhub()
-// a.on('test',()=>{
-//     console.log('123')
-// })
-// setTimeout(()=>{
-//     a.off('test',()=>{
-//         console.log('cancel')
-//     })
-// },500)
-// console.log('start')
-// setTimeout(()=>{
-//     a.emit('test')
-// },1000)
-
-const a = { b :3}
-
-function foo(obj) {
-  obj.b = 5
-
-  return obj
+const handelPictureUrl=(url)=>{
+  let n=url.indexOf('_')
+  if(n>-1) {
+    url=url.slice(n+1)
+    let w=url.indexOf('w')
+    let h=url.indexOf('h')
+    let width=parseInt(url.slice(w+1,h))
+    let height=parseInt(url.slice(h+1))
+    console.log(width/height,w,h,width,height)
+    return width/height
+  }
 }
 
-const aa = foo(a)
-
-console.log(a.b)
-
-console.log(aa.b)
+handelPictureUrl(url)

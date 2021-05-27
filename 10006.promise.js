@@ -12,28 +12,28 @@ class Promise1 {
     // 存放成功的回调
     this.onResolvedCallbacks = [];
     // 存放失败的回调
-    this.onRejectedCallbacks= [];
+    this.onRejectedCallbacks = [];
 
     let resolve = (value) => {
-      if(this.status ===  PENDING) {
+      if (this.status === PENDING) {
         this.status = FULFILLED;
         this.value = value;
         // 依次将对应的函数执行
-        this.onResolvedCallbacks.forEach(fn=>fn());
+        this.onResolvedCallbacks.forEach(fn => fn());
       }
-    } 
+    }
 
     let reject = (reason) => {
-      if(this.status ===  PENDING) {
+      if (this.status === PENDING) {
         this.status = REJECTED;
         this.reason = reason;
         // 依次将对应的函数执行
-        this.onRejectedCallbacks.forEach(fn=>fn());
+        this.onRejectedCallbacks.forEach(fn => fn());
       }
     }
 
     try {
-      executor(resolve,reject)
+      executor(resolve, reject)
     } catch (error) {
       reject(error)
     }
@@ -55,7 +55,7 @@ class Promise1 {
       });
 
       // 如果promise的状态是 pending，需要将 onFulfilled 和 onRejected 函数存放起来，等待状态确定后，再依次将对应的函数执行
-      this.onRejectedCallbacks.push(()=> {
+      this.onRejectedCallbacks.push(() => {
         onRejected(this.reason);
       })
     }
@@ -64,14 +64,28 @@ class Promise1 {
 
 // test
 const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('成功');
-    },1000);
-  }).then(
-    (data) => {
-      console.log('success', data)
-    },
-    (err) => {
-      console.log('faild', err)
-    }
-  )
+  setTimeout(() => {
+    resolve('成功');
+  }, 1000);
+}).then(
+  (data) => {
+    console.log('success', data)
+  },
+  (err) => {
+    console.log('faild', err)
+  }
+)
+
+
+
+async function test() {
+  const one=()=>{return new Promise((resolve, reject) => { setTimeout(() => { let a = 1;res=a;resolve(res) }, 1000) })}
+  let data=await one()
+  return data
+}
+test((res)=>{
+  console.log(111,res)
+})
+// test().then(res=>{
+//   console.log(res)
+// })
