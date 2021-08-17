@@ -16,7 +16,6 @@ var isPalindrome = function(x) {
       }else {
           return false;
       }
-      return false;
   }else if(x<10) {
       return true;
   }

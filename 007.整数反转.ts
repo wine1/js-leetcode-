@@ -18,12 +18,11 @@ function reverse(x: number): number {
     temp = temp.toString().split('').reverse()
     temp = temp.join('')
     temp = parseInt(temp)
-    res = isNegative ? temp - temp * 2 : temp
-    if(res<Math.pow(2,31) && res>Math.pow(-2,31)-1) {
-    return res
-    }else {
+    res = isNegative ? 0 - temp: temp
+    if (res < Math.pow(2, 31) && res > Math.pow(-2, 31) - 1) {
+        return res
+    } else {
         return 0
     }
 };
 // @lc code=end
-
