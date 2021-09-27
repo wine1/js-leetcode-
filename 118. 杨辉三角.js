@@ -15,18 +15,19 @@
  * @param {number} numRows
  * @return {number[][]}
  */
+// i是行 j是列
 var generate = function (numRows) {
   let res = new Array()
-  res.push([1])
+  res.push([1]) // i=0 j=0时 res[i][j]=1
   // console.log('res',res)
   for (let i = 1; i < numRows; i++) {
     let temp = new Array()
-    temp[0] = 1
-    for (let j = 1; j < i + 1; j++) {
-      if (j === i) {
+    temp[0] = 1 // i递增 j为0 是 res[i][j]=1
+    for (let j = 1; j < i + 1; j++) { // 所以循环从j=1 开始
+      if (j === i) {  // 如果i==j 即到每行的最后一个时 res[i][j]=1
         temp[j] = 1
       } else {
-        temp[j] = res[i - 1][j - 1] + res[i - 1][j]
+        temp[j] = res[i - 1][j - 1] + res[i - 1][j] // 其余的值为上一行的两个值的和
       }
     }
     // console.log('temp',temp)
