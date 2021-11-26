@@ -25,7 +25,17 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var merge = function (nums1, m, nums2, n) {}
+var merge = function (nums1, m, nums2, n) {
+  if (m === 0) {
+    nums1 = nums2
+    return nums1
+  }
+  if (n === 0) return nums1
+  else {
+  }
+}
 
-console.log(merge())
+// console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+console.log(merge([1], 1, [], 0)) //[1]
+console.log(merge([0], 0, [1], 1)) //[1]
 console.log(1111)

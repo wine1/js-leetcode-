@@ -3,55 +3,55 @@ const oldObj = {
   b: ['e', 'f', 'g'],
   c: { h: { i: 2 } },
   d: function say() {
-    console.log('hi');
+    console.log('hi')
   },
-};
-oldObj.circleRef = oldObj;
+}
+oldObj.circleRef = oldObj
 //   JSON.parse(JSON.stringify(obj))方法会丢失 d:function say(){console.log('hi)}
 //   function deepclone(obj) {
 //     return JSON.parse(JSON.stringify(obj))
 //   }
 
-const isObject = (obj) => {
+const isObject = obj => {
   return typeof obj === 'object' && obj !== null
 }
 
 function deepclone(source) {
   if (!isObject(source)) return source
-  let target = Array.isArray(source) ? [] : {};
+  let target = Array.isArray(source) ? [] : {}
   for (let key in source) {
     if (Object.prototype.hasOwnProperty.call(source, key)) {
       if (isObject(source[key])) {
         target[key] = deepclone(source[key])
-      }else {
+      } else {
         target[key] = source[key]
       }
-    } 
+    }
   }
-return target
+  return target
 }
 
 // 解决循环引用
 
 function deepclone2(source, hash = new WeakMap()) {
-
-  if (!isObject(source)) return source; 
-  if (hash.has(source)) return hash.get(source);// 新增代码，查哈希表
-  var target = Array.isArray(source) ? [] : {};
-  hash.set(source, target); // 新增代码，哈希表设值
-  for(var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-          if (isObject(source[key])) {
-              target[key] = deepclone2(source[key], hash); // 新增代码，传入哈希表
-          } else {
-              target[key] = source[key];
-          }
+  if (!isObject(source)) return source
+  if (hash.has(source)) return hash.get(source) // 新增代码，查哈希表
+  var target = Array.isArray(source) ? [] : {}
+  hash.set(source, target) // 新增代码，哈希表设值
+  for (var key in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key)) {
+      if (isObject(source[key])) {
+        target[key] = deepclone2(source[key], hash) // 新增代码，传入哈希表
+      } else {
+        target[key] = source[key]
       }
+    }
   }
-  return target;
+  return target
 }
 
 let newObj = deepclone2(oldObj)
+oldObj.b = [1, 2, 3]
 console.log(newObj)
 console.log(111)
 
@@ -59,8 +59,7 @@ console.log(111)
 // 2. 处理数组
 // 3. 处理对象 解决循环引用
 
-loadsh中的cloneDeep的实现
-```
+loadsh中的cloneDeep的实现```
 function baseClone(value, bitmask, customizer, key, object, stack) {
   let result
   // 根据位掩码，切分判断入口

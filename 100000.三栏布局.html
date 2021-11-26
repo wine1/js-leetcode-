@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三栏布局</title>
+  </head>
+  <body>
+    <!-- /*  方式一 */ -->
+    <div class="parent1">
+      <div class="left1"></div>
+      <div class="center1">'Trading Rules:'</div>
+      <div class="right1"></div>
+    </div>
+  </body>
+
+  <style>
+    .parent1 {
+      background: #000;
+      height: 100px;
+      width: 100%;
+      font-size: 0;
+    }
+
+    .left1 {
+      display: inline-block;
+      background: red;
+      width: 100px;
+      height: 100px;
+    }
+
+    .center1 {
+      display: inline-block;
+      background: green;
+      width: calc(100% - 200px);
+      height: 100px;
+      color: #fff;
+      font-size: 14px;
+      overflow: hidden;
+      height: 100px;
+    }
+
+    .right1 {
+      display: inline-block;
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+  <!-- /* 方式二 */ -->
+  <div class="parent2">
+    <div class="left2"></div>
+    <div class="center2">'Trading Rules:'</div>
+    <div class="right2"></div>
+  </div>
+  <style>
+    .parent2 {
+      background: #000;
+      height: 100px;
+      width: 100%;
+      font-size: 0;
+      display: flex;
+    }
+
+    .left2 {
+      display: inline-block;
+      background: red;
+      width: 100px;
+      height: 100px;
+    }
+
+    .center2 {
+      display: inline-block;
+      background: green;
+      flex: 1;
+      color: #fff;
+      font-size: 14px;
+      overflow: hidden;
+      height: 100px;
+    }
+
+    .right2 {
+      display: inline-block;
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+  <!-- /* 方式三 */ -->
+  <div class="parent3">
+    <div class="left3"></div>
+    <div class="right3"></div>
+    <div class="center3">'Trading Rules:'</div>
+  </div>
+  <style>
+    .parent3 {
+      background: #000;
+      height: 100px;
+      width: 100%;
+      font-size: 0;
+    }
+    .left3 {
+      background: red;
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+    .right3 {
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      float: right;
+    }
+    .center3 {
+      background: green;
+      margin: 0 100px;
+      color: #fff;
+      font-size: 14px;
+      height: 100px;
+    }
+  </style>
+  <!-- 方式四 双飞翼布局 -->
+  <div class="parent4">
+    <div class="center4">'Trading Rules:'</div>
+  </div>
+  <div class="left4"></div>
+  <div class="right4"></div>
+
+  <style>
+    .parent4 {
+      float: left;
+      width: 100%;
+    }
+    .center4 {
+      background: green;
+      margin: 0 100px;
+      color: #fff;
+      font-size: 14px;
+      height: 100px;
+    }
+    .left4 {
+      float: left;
+      background: red;
+      width: 100px;
+      height: 100px;
+      margin-left: -100%;
+    }
+    .right4 {
+      float: left;
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      margin-left: -100px;
+    }
+  </style>
+
+  <!-- 方式五 圣杯布局 -->
+  <div class="parent5">
+    <div class="center5">'Trading Rules:'</div>
+    <div class="left5"></div>
+    <div class="right5"></div>
+  </div>
+
+  <style>
+    .parent5 {
+      margin: 0 100px;
+    }
+    .center5 {
+      float: left;
+      background: green;
+      width: 100%;
+      color: #fff;
+      font-size: 15px;
+      height: 100px;
+    }
+    .left5 {
+      float: left;
+      background: red;
+      width: 100px;
+      height: 100px;
+      margin-left: -100%;
+      position: relative;
+      left: -100px;
+    }
+    .right5 {
+      float: left;
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      margin-right: -100px;
+    }
+  </style>
+</html>

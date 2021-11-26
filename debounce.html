@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>debounce</title>
+  </head>
+  <body>
+    <input type="text" id="debounce" />
+    <input type="text" id="throttle" />
+  </body>
+
+  <script>
+    // 函数防抖
+    //模拟一段ajax请求
+    function ajax(content) {
+      console.log('ajax request ' + content)
+    }
+
+    function debounce(fun, delay) {
+      return function (args) {
+        let that = this
+        let _args = args
+        clearTimeout(fun.id)
+        fun.id = setTimeout(function () {
+          fun.call(that, _args)
+        }, delay)
+      }
+    }
+
+    let inputb = document.getElementById('debounce')
+
+    let debounceAjax = debounce(ajax, 500)
+
+    inputb.addEventListener('keyup', function (e) {
+      debounceAjax(e.target.value)
+    })
+  </script>
+
+  <script>
+    // 函数节流
+    function throttle(fn, time) {
+      let timer = null
+      let that = this
+      return function (...args) {
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn.apply(that, args)
+            timer = null
+          }, time)
+        }
+      }
+    }
+
+    let inputa = document.getElementById('throttle')
+    let ajaxThrottle = throttle(ajax, 3000)
+    inputa.addEventListener('keyup', function (e) {
+      ajaxThrottle(e.target.value)
+    })
+  </script>
+</html>

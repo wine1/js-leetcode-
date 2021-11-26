@@ -26,31 +26,58 @@
 // 解题思路：
 // 将链表节点值取出进行加法运算后重新构建链表
 
-var addTwoNumbers = function(l1, l2) {
-    let sum = 0;
-    let carry = 0;
-    let result = new ListNode(null);
-    let nextres = result;
-    while (l1 !== null || l2 !== null) {
-      let x = l1 !== null ? l1.val : 0;
-      let y = l2 !== null ? l2.val : 0;
-      sum = x + y + carry;
-      if (sum >= 10) {
-        carry = 1;
-      }else {
-          carry=0;
-      }
-      
-      sum = sum % 10;
-      nextres.next=new ListNode(sum);
-      nextres=nextres.next;
-  
-      if(l1 != null) l1 = l1.next
-      if(l2 != null) l2 = l2.next        
+var addTwoNumbers = function (l1, l2) {
+  let sum = 0
+  let carry = 0
+  let result = new ListNode(null)
+  let nextres = result
+  while (l1 !== null || l2 !== null) {
+    let x = l1 !== null ? l1.val : 0
+    let y = l2 !== null ? l2.val : 0
+    sum = x + y + carry
+    if (sum >= 10) {
+      carry = 1
+    } else {
+      carry = 0
     }
-    if(carry) {
-        nextres.next=new ListNode(carry);
+
+    sum = sum % 10
+    nextres.next = new ListNode(sum)
+    nextres = nextres.next
+
+    if (l1 != null) l1 = l1.next
+    if (l2 != null) l2 = l2.next
+  }
+  if (carry) {
+    nextres.next = new ListNode(carry)
+  }
+  return result.next
+}
+
+// 相较而言 链表是更费时间和空间的解法
+// 链表解法
+var addTwoNumbers = function (l1, l2) {
+  let resListNode = null,
+    tail = null
+  let carry = 0
+  while (l1 || l2) {
+    let l1val = l1 ? l1.val : 0
+    let l2val = l2 ? l2.val : 0
+    let sum = l1val + l2val + carry
+    carry = Math.floor(sum / 10)
+    sum = sum % 10
+    if (!resListNode) {
+      resListNode = tail = new ListNode(sum)
+    } else {
+      tail.next = new ListNode(sum)
+      tail = tail.next
     }
-    return result.next;
-  };
-  
+    if (l1) l1 = l1.next
+    if (l2) l2 = l2.next
+  }
+  if (carry) {
+    tail.next = new ListNode(1)
+  }
+  return resListNode
+}
+// @lc code=end

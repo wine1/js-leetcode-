@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button onclick="myClick()">执行fn1函数</button>
+    <script>
+      // function test() {
+      //   // 漏掉了声明, 将会自动挂载到window对象下
+      //   str = '' // 换成  var str='' 就可以被正常释放掉
+      //   for (let i = 0; i < 10000; i++) {
+      //     str += 'xx'
+      //   }
+      //   return str
+      // }
+      // // test执行结束后, str应该就没用了, 但是它常驻在了内存中
+      // test()
+
+      // function fn() {
+      //   const leak = 'xx'
+      //   return function () {
+      //     return leak
+      //   }
+      // }
+      // const getX = fn()
+      // // console.log(getX())
+
+      function fn1() {
+        let a = new Array(10000) // 这里设置了一个很大的数组对象
+
+        let b = 3
+
+        function fn2() {
+          let c = [1, 2, 3]
+        }
+
+        fn2()
+
+        return a
+      }
+
+      let res = []
+
+      function myClick() {
+        res.push(fn1())
+      }
+    </script>
+  </body>
+</html>

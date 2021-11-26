@@ -8,7 +8,7 @@
 // 示例 1:
 
 // 输入: "abcabcbb"
-// 输出: 3 
+// 输出: 3
 // 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 // 示例 2:
 
@@ -24,29 +24,53 @@
 // 解题思路：
 // 遍历字符串,
 
-var lengthOfLongestSubstring = function(s) {
-    let str = s[0];
-    let len = s.length;
-    let maxlen = 1;
-    let res = 1;
-    if (len === 0) {
-      return 0;
+var lengthOfLongestSubstring = function (s) {
+  let str = s[0]
+  let len = s.length
+  let maxlen = 1
+  let res = 1
+  if (len === 0) {
+    return 0
+  }
+  for (let i = 1; i < len; i++) {
+    if (str.indexOf(s[i]) == -1) {
+      str += s[i]
+      maxlen++
+    } else {
+      let temp = str.indexOf(s[i]) + 1
+      str = str.substr(temp)
+      str += s[i]
+      maxlen = str.length
+      // console.log(temp, str);
     }
-    for (let i = 1; i < len; i++) {
-      if (str.indexOf(s[i]) == -1) {
-        str += s[i];
-        maxlen++;
-      } else {
-        let temp = str.indexOf(s[i]) + 1;
-        str = str.substr(temp);
-        str += s[i];
-        maxlen = str.length;
-        // console.log(temp, str);
-      }
-      res = res > maxlen ? res : maxlen;
-      // console.log("str", str, "maxlen", maxlen);
+    res = res > maxlen ? res : maxlen
+    // console.log("str", str, "maxlen", maxlen);
+  }
+  return res
+}
+// 最新方案 hash一次遍历 把最小字串打出来了
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+  if (!s.length) return 0
+  let resHash = new Map()
+  let maxLenght = 1
+  let maxIndex = 0
+  let str = s[0]
+  resHash.set(0, s[0])
+  for (let i = 1; i < s.length; i++) {
+    let index = str.indexOf(s[i])
+    if (index !== -1) {
+      str = str.slice(index + 1)
     }
-    return res;
-  };
+    str += s[i]
+    resHash.set(i, str)
+    maxIndex = maxLenght >= str.length ? maxIndex : i
+    maxLenght = maxLenght >= str.length ? maxLenght : str.length
+  }
+  return maxLenght
+}
 
-  console.log(lengthOfLongestSubstring('pwwkew'))
+console.log(lengthOfLongestSubstring('pwwkew'))
