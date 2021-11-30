@@ -78,3 +78,5 @@ const p3 = p2.then(
     console.log('faild', err)
   }
 )
+
+// 支持链式调用
