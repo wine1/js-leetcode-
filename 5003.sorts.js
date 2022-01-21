@@ -102,9 +102,9 @@ console.log('mergeSort', mergeSort([3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46]))
 const partication = (nums, left, right) => {
   let tmp = nums[left]
   while (left < right) {
-    while (left < right && nums[right] > tmp) right -= 1
+    while (left < right && nums[right] >= tmp) right -= 1
     nums[left] = nums[right]
-    while (left < right && nums[left] < tmp) left += 1
+    while (left < right && nums[left] <= tmp) left += 1
     nums[right] = nums[left]
   }
   nums[left] = tmp
@@ -112,7 +112,7 @@ const partication = (nums, left, right) => {
 }
 
 const quickSort = (nums, left, right) => {
-  if (left >= right) return
+  if (left > right) return
   let index = partication(nums, left, right)
   quickSort(nums, left, index - 1)
   quickSort(nums, index + 1, right)
@@ -122,5 +122,6 @@ const sort = nums => {
   return nums
 }
 console.log('quicksort', sort([3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46]))
-
+console.log(sort([5, 2, 3, 1]))
+console.log(sort([5, 1, 1, 2, 0, 0]))
 // 6. 堆排序

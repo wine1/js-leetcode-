@@ -11,28 +11,31 @@
 
 //  输入：nums = [5,1,1,2,0,0]
 //  输出：[0,0,1,1,2,5]
-const quickSort = (nums, index, left, right) => {
-  if (left >= right) return nums
-  while (left <= right) {
-    if (nums[index] < nums[left]) {
-      left++
-    } else if (nums[index] <= nums[right]) {
-      [(nums[left], nums[right])] = [nums[right], nums[left]]
-      right--
-    }
+
+const quickSort = (nums, left, right) => {
+  let temp = nums[left]
+  while (left < right) {
+    while (left < right && nums[right] >= temp) right -= 1
+    nums[left] = nums[right]
+    while (left < right && nums[left] <= temp) left += 1
+    nums[right] = nums[left]
   }
-  index++
-  [(nums[left], nums[right])] = [nums[right], nums[left]]
-  quickSort(nums, index + 1, left, right)
+  nums[left] = temp
+  return left
 }
+const sort = (nums, left, right) => {
+  if (left >= right) return
+  let index = quickSort(nums, left, right)
+  sort(nums, left, index - 1)
+  sort(nums, index + 1, right)
+}
+
 var sortArray = function (nums) {
-  let index = 0,
-    left = index + 1,
+  let left = 0,
     right = nums.length - 1
-  quickSort(nums, 0, left, right)
-  console.log(nums)
+  sort(nums, left, right)
   return nums
 }
 
-sortArray([5, 2, 3, 1])
-sortArray([5, 1, 1, 2, 0, 0])
+console.log(sortArray([5, 2, 3, 1]))
+console.log(sortArray([5, 1, 1, 2, 0, 0]))
