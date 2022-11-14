@@ -16,3 +16,8 @@ const handelPictureUrl=(url)=>{
 }
 
 handelPictureUrl(url)
+
+const test=(value)=>{
+return value.replace(/[^\d.]/g,'')
+}
+console.log(test('发放1张优惠券，可在支付换电订单时使用，请前往'))
