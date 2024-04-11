@@ -9,11 +9,7 @@ class EventBus {
   /** 发布 */
   emit(name, ...args) {
     this.tempMap.get(name).forEach(fn => {
-      if (args.length > 0) {
-        fn.apply(this, args)
-      } else {
-        fn.call(this)
-      }
+      fn(args)
     })
   }
   /** 订阅 */
@@ -28,7 +24,6 @@ class EventBus {
   off(name, fn) {
     if (this.tempMap.has(name)) {
       let list = this.tempMap.get(name)
-      // console.log(111, list, list.has(fn))
       if (list.has(fn)) {
         list.delete(fn)
         this.tempMap.set(name, list)

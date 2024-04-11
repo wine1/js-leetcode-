@@ -24,6 +24,7 @@
 // 解题思路：
 // 遍历字符串,
 
+// 滑动窗口
 var lengthOfLongestSubstring = function (s) {
   let str = s[0]
   let len = s.length
@@ -74,3 +75,8 @@ var lengthOfLongestSubstring = function (s) {
 }
 
 console.log(lengthOfLongestSubstring('pwwkew'))
+console.log(lengthOfLongestSubstring('abcabcbb')) //abc
+console.log(lengthOfLongestSubstring('bbbbb')) //b
+console.log(lengthOfLongestSubstring('pwwkew')) //kew
+console.log(lengthOfLongestSubstring('aabaab!bb'))
+console.log(lengthOfLongestSubstring(''))

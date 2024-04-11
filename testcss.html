@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="center">
+        src：
+        表示对资源的引用，它指向的内容会嵌入到当前标签所在的位置。src会将其指向的资源下载并应⽤到⽂档内，如请求js脚本。当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执⾏完毕，所以⼀般js脚本会放在页面底部。
+      </div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+
+    <div class="content2">
+      <div class="center2">
+        src：
+        表示对资源的引用，它指向的内容会嵌入到当前标签所在的位置。src会将其指向的资源下载并应⽤到⽂档内，如请求js脚本。当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执⾏完毕，所以⼀般js脚本会放在页面底部。
+      </div>
+    </div>
+    <div class="left2"></div>
+    <div class="right2"></div>
+
+    <p contenteditable="true"><span>2</span><sup>2</sup></p>
+
+    <style>
+      .content {
+        margin: 0 100px;
+      }
+      .center {
+        float: left;
+        background: green;
+        /* height: 100px; */
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .left {
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        left: -100px;
+        background: red;
+        width: 100px;
+        height: 100px;
+      }
+      .right {
+        float: left;
+        margin-left: -100px;
+        position: relative;
+        right: -100px;
+        background: blue;
+        width: 100px;
+        height: 100px;
+      }
+
+      .content2 {
+        margin: 0 100px;
+        float: left;
+      }
+      .left2 {
+        background: red;
+        float: left;
+        margin-left: -100%;
+        width: 100px;
+        height: 100px;
+      }
+      .right2 {
+        background: blue;
+        float: right;
+        margin-left: -100%;
+        width: 100px;
+        height: 100px;
+      }
+      .center2 {
+        background: green;
+      }
+    </style>
+
+    
+    </style>
+  </body>
+</html>

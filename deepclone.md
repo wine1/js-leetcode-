@@ -98,18 +98,24 @@ console.log(newObj3)
 
 ```
 const funcDeepClone = (source, hash = new WeakMap()) => {
-if (typeof source !== 'object') return source
-if (hash.has(source)) return hash.get(source)
-let res = Array.isArray(source) ? [] : {}
-hash.set(source, res)
-for (let key in source) {
-if (typeof source[key] === 'object') {
-res[key] = funcDeepClone(source[key], hash)
-} else {
-res[key] = source[key]
-}
-}
-return res
+  if (!source) return source // 对应null  和 undefined 的情况
+  if (typeof source !== 'object') return source // 基本类型
+
+  let res = Array.isArray(source) ? [] : {}
+  if (hash.has(source)) return hash.get(source)
+  hash.set(source, res)
+  for (let key in source) {
+    if (source.hasOwnProperty(key)) {
+      if (source[key] instanceof Date) {
+        res[key] = new Date(source[key])
+      } else if (source[key] instanceof RegExp) {
+        res[key] = new RegExp(source[key])
+      } else {
+        res[key] = funcDeepClone(source[key], hash)
+      }
+    }
+  }
+  return res
 }
 
 const oldObj4 = {
