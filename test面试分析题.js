@@ -85,21 +85,21 @@ class Example extends React.Component {
 
 //5
 var b = 10
-;(function () {
-  b = 20
-  console.log(b)
-})()
+  ; (function () {
+    b = 20
+    console.log(b)
+  })()
 // 结果 20
 
 //6
 var a = 10
-;(function () {
-  console.log(a)
-  a = 5
-  console.log(window.a)
-  var a = 20
-  console.log(a)
-})()
+  ; (function () {
+    console.log(a)
+    a = 5
+    console.log(window.a)
+    var a = 20
+    console.log(a)
+  })()
 // 结果 undefined 10 20
 
 //7
@@ -147,13 +147,4 @@ a.x = a = { n: 2 }
 console.log(a.x) //{n:2}
 console.log(b.x) // undefined
 
-<<<<<<< HEAD
 console.log('测试node')
-=======
-handelPictureUrl(url)
-
-const test=(value)=>{
-return value.replace(/[^\d.]/g,'')
-}
-console.log(test('发放1张优惠券，可在支付换电订单时使用，请前往'))
->>>>>>> 93fd47fcfb85eccb1096f613bc2f857b77fe0f18

@@ -26,3 +26,4 @@ console.log('res', maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3))
 console.log('res', maxSlidingWindow([1], 1))
 console.log('res', maxSlidingWindow([7, 2, 4], 2)) // [7, 4]
 console.log('res', maxSlidingWindow([1, 3, 1, 2, 0, 5], 3)) //[3,3,2,5]
+console.log('res', maxSlidingWindow([1, 3, 1, 2, 0, 5], 1)) //[1,3,1,2,0,5]

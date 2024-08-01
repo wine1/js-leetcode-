@@ -1,10 +1,4 @@
-// var a = { n: 1 }
-// var b = a
-// a.x = a = { n: 2 }
-// console.log(a.x) //{n:2}
-// console.log(b.x) // undefined
 
-// console.log(13)
 const fs = require('fs')
 const path = require('path')
 const filePath = path.join(__dirname, '')

@@ -1,0 +1,13 @@
+<body>
+  <input id="input" />
+  <div>input的值<Text id="inputValue"></Text></div>
+</body>
+<script>
+  const value = document.getElementById('inputValue')
+  const input = document.getElementById('input')
+  input.addEventListener('keyup', function (res) {
+    console.log(res.key)
+    let val = res.key
+    value.innerText = value.innerText + val
+  })
+</script>
