@@ -10,7 +10,7 @@
     <!-- /*  方式一 */ -->
     <div class="parent1">
       <div class="left1"></div>
-      <div class="center1">'Trading Rules:'</div>
+      <div class="center1">calc</div>
       <div class="right1"></div>
     </div>
   </body>
@@ -51,7 +51,7 @@
   <!-- /* 方式二 */ -->
   <div class="parent2">
     <div class="left2"></div>
-    <div class="center2">'Trading Rules:'</div>
+    <div class="center2">flex</div>
     <div class="right2"></div>
   </div>
   <style>
@@ -92,7 +92,7 @@
   <div class="parent3">
     <div class="left3"></div>
     <div class="right3"></div>
-    <div class="center3">'Trading Rules:'</div>
+    <div class="center3">float</div>
   </div>
   <style>
     .parent3 {
@@ -123,7 +123,7 @@
   </style>
   <!-- 方式四 双飞翼布局 -->
   <div class="parent4">
-    <div class="center4">'Trading Rules:'</div>
+    <div class="center4">双飞翼布局</div>
   </div>
   <div class="left4"></div>
   <div class="right4"></div>
@@ -158,22 +158,21 @@
 
   <!-- 方式五 圣杯布局 -->
   <div class="parent5">
-    <div class="center5">'Trading Rules:'</div>
+    <div class="center5">圣杯布局</div>
     <div class="left5"></div>
     <div class="right5"></div>
   </div>
 
   <style>
     .parent5 {
-      margin: 0 100px;
+      padding: 0 100px;
+      display: inline-block;
     }
     .center5 {
       float: left;
       background: green;
-      width: 100%;
-      color: #fff;
-      font-size: 15px;
       height: 100px;
+      width: 100%;
     }
     .left5 {
       float: left;
@@ -186,10 +185,55 @@
     }
     .right5 {
       float: left;
-      background-color: blue;
+      background: blue;
       width: 100px;
       height: 100px;
       margin-right: -100px;
+    }
+  </style>
+
+  <div class="wrap-float">
+    <div class="float-box"></div>
+    <div class="clear"></div>
+  </div>
+
+  <style>
+    .wrap-float {
+      background: red;
+      /* height: 110px; */
+    }
+    .float-box {
+      float: left;
+      height: 100px;
+      width: 100px;
+      background: #000;
+    }
+    .clear::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+    /* .clear {
+      clear: both;
+    } */
+  </style>
+
+  <div class="wrapbox">
+    <div class="innerbox"></div>
+  </div>
+  <style>
+    .wrapbox {
+      position: relative;
+      background: #000;
+      width: 400px;
+      height: 400px;
+    }
+    .innerbox {
+      position: relative;
+      line-height: 400px;
+      width: 50px;
+      height: 50px;
+      background: #fff;
     }
   </style>
 </html>

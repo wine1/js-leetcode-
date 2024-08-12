@@ -33,8 +33,6 @@ const deepClone = (source, hash = new WeakMap()) => {
   return res
 }
 
-// bfs
-const deepcloneBfs = source => {}
 oldObj.c.h = oldObj //循环引用
 const newObj = deepClone(oldObj)
 oldObj.e[0].m = 10

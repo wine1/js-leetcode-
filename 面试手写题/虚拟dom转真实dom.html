@@ -1,0 +1,58 @@
+<html>
+  <script>
+    const vnode = {
+      tag: 'DIV',
+      attrs: {
+        id: 'app',
+      },
+      children: [
+        {
+          tag: 'SPAN',
+          children: [
+            {
+              tag: 'A',
+              children: [],
+            },
+          ],
+        },
+        {
+          tag: 'SPAN',
+          children: [
+            {
+              tag: 'A',
+              children: [],
+            },
+            {
+              tag: 'A',
+              children: [],
+            },
+          ],
+        },
+      ],
+    }
+
+    const createNode = (tag, attrs) => {
+      let dom = document.createElement(tag)
+      if (attrs) {
+        let name = Object.keys(attrs)[0]
+        let value = Object.values(attrs)[0]
+        if (name && value) dom.setAttribute(name, value)
+      }
+      return dom
+    }
+
+    function render(vnode) {
+      const { tag = '', attrs = {}, children = [] } = vnode
+      let dom = createNode(tag, attrs)
+      if (children.length) {
+        for (let i = 0; i < children.length; i++) {
+          let child = render(children[i])
+          dom.appendChild(child)
+        }
+      }
+      return dom
+    }
+
+    console.log(render(vnode))
+  </script>
+</html>

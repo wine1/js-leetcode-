@@ -18,7 +18,7 @@
 // var instance = new SubType()
 // console.log(instance.getSuperValue())
 
-// 构造函数继承
+// 构造函数继承 通过构造函数继承，子类只能继承父类的实例属性，而无法继承父类的原型方法。这意味着父类定义在 prototype 上的方法不会被子类继承。
 // function SuperType() {
 //   this.colors = ['red', 'green', 'blue']
 // }
@@ -90,32 +90,32 @@
 // anotherPerson.sayhi()
 
 // 寄生式组合继承
-function inheritPrototype(subType, superType) {
-  let prototype = Object(superType.prototype); // 创建对象
-  prototype.constructor = subType; // 增强对象
-  subType.prototype = prototype; // 赋值对象
-}
-function SuperType(name) {
-  this.name = name;
-  this.colors = ["red", "blue", "green"];
-}
-SuperType.prototype.sayName = function () {
-  console.log(this.name);
-};
-function SubType(name, age) {
-  SuperType.call(this, name);
-  this.age = age;
-}
-inheritPrototype(SubType, SuperType);
-SubType.prototype.sayAge = function () {
-  console.log(this.age);
-};
-const instance = new SubType('123', 18)
-instance.colors.push('black')
-console.log(instance.colors)
-instance.sayName()
-instance.sayAge()
-const instance2 = new SubType('456', 28)
-console.log(instance2.colors)
-instance2.sayName()
-instance2.sayAge()
+// function inheritPrototype(subType, superType) {
+//   let prototype = Object(superType.prototype); // 创建对象
+//   prototype.constructor = subType; // 增强对象
+//   subType.prototype = prototype; // 赋值对象
+// }
+// function SuperType(name) {
+//   this.name = name;
+//   this.colors = ["red", "blue", "green"];
+// }
+// SuperType.prototype.sayName = function () {
+//   console.log(this.name);
+// };
+// function SubType(name, age) {
+//   SuperType.call(this, name);
+//   this.age = age;
+// }
+// inheritPrototype(SubType, SuperType);
+// SubType.prototype.sayAge = function () {
+//   console.log(this.age);
+// };
+// const instance = new SubType('123', 18)
+// instance.colors.push('black')
+// console.log(instance.colors)
+// instance.sayName()
+// instance.sayAge()
+// const instance2 = new SubType('456', 28)
+// console.log(instance2.colors)
+// instance2.sayName()
+// instance2.sayAge()
