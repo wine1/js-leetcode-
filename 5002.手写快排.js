@@ -12,30 +12,59 @@
 //  输入：nums = [5,1,1,2,0,0]
 //  输出：[0,0,1,1,2,5]
 
-const quickSort = (nums, left, right) => {
-  let temp = nums[left]
-  while (left < right) {
-    while (left < right && nums[right] >= temp) right -= 1
-    nums[left] = nums[right]
-    while (left < right && nums[left] <= temp) left += 1
-    nums[right] = nums[left]
+// const partition = (arr, left, right) => {
+//   let pivot = arr[left]
+//   while (left < right) {
+//     while (left < right && pivot <= arr[right]) {
+//       right--
+//     }
+//     arr[left] = arr[right]
+//     while (left < right && pivot >= arr[left]) {
+//       left++
+//     }
+//     arr[right] = arr[left]
+//   }
+//   arr[left] = pivot
+//   return left
+// }
+
+// const sort = (arr, left, right) => {
+//   if (left > right) return
+//   const pivot = partition(arr, left, right)
+//   sort(arr, left, pivot - 1)
+//   sort(arr, pivot + 1, right)
+
+// }
+// const quickSort = (nums) => {
+//   sort(nums, 0, nums.length - 1)
+//   return nums
+// }
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var quickSort = function (nums) {
+  const partition = (left, right) => {
+    let temp = nums[left]
+    while (left < right) {
+      while (left < right && nums[right] >= temp) right--
+      nums[left] = nums[right]
+      while (left < right && nums[left] <= temp) left++
+      nums[right] = nums[left]
+    }
+    nums[left] = temp
+    return left
   }
-  nums[left] = temp
-  return left
-}
-const sort = (nums, left, right) => {
-  if (left >= right) return
-  let index = quickSort(nums, left, right)
-  sort(nums, left, index - 1)
-  sort(nums, index + 1, right)
-}
+  const sort = (left, right) => {
+    if (left > right) return
+    const p = partition(left, right)
+    sort(left, p - 1)
+    sort(p + 1, right)
+  }
 
-var sortArray = function (nums) {
-  let left = 0,
-    right = nums.length - 1
-  sort(nums, left, right)
+  sort(0, nums.length - 1)
   return nums
-}
-
-console.log(sortArray([5, 2, 3, 1]))
-console.log(sortArray([5, 1, 1, 2, 0, 0]))
+};
+console.log(quickSort([5, 2, 3, 1]))
+console.log(quickSort([5, 1, 1, 2, 0, 0]))

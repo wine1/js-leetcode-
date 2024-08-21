@@ -49,6 +49,22 @@ var lengthOfLongestSubstring = function (s) {
   }
   return res
 }
+
+
+var lengthOfLongestSubstring = function (s) {
+  if (s.length === 1) return 1
+  let res = 0
+  let str = s[0]
+  for (let i = 1; i < s.length; i++) {
+    let index = str.indexOf(s[i])
+    str += s[i]
+    if (index !== -1) {
+      str = str.slice(index + 1)
+    }
+    res = res > str.length ? res : str.length
+  }
+  return res
+};
 // 最新方案 hash一次遍历 把最小字串打出来了
 /**
  * @param {string} s
@@ -73,6 +89,7 @@ var lengthOfLongestSubstring = function (s) {
   }
   return maxLenght
 }
+
 
 console.log(lengthOfLongestSubstring('pwwkew'))
 console.log(lengthOfLongestSubstring('abcabcbb')) //abc

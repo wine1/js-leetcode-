@@ -1,13 +1,13 @@
 // Js中的冒泡排序、选择排序、快速排序、桶排序原理
 // test [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46]
 
-// 1. 冒泡排序 时间复杂度 O(n2)
+// 1. 冒泡排序 时间复杂度 O(n*n)
 const bubbleSort = nums => {
   let len = nums.length
   for (let i = len; i > 0; i--) {
     for (let j = 1; j < i; j++) {
       if (nums[j] < nums[j - 1]) {
-        ;[nums[j], nums[j - 1]] = [nums[j - 1], nums[j]]
+        [nums[j], nums[j - 1]] = [nums[j - 1], nums[j]]
       }
     }
   }
@@ -15,7 +15,7 @@ const bubbleSort = nums => {
 }
 console.log('bubbleSort', bubbleSort([3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46]))
 
-// 2. 选择排序  时间复杂度 O(n2)
+// 2. 选择排序  时间复杂度 
 // 在未排序序列中找到最小（大）元素，存放到排序序列的起始位置
 // 从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
 // 重复第二步，直到所有元素均排序完毕。
