@@ -10,4 +10,30 @@
     let val = res.key
     value.innerText = value.innerText + val
   })
+
+  function myAjax(method, url) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open(method, url, true)
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(`error,${xhr.status}`)
+          }
+        }
+      }
+      xhr.send()
+    })
+  }
+
+  myAjax(
+    'get',
+    'http://gips3.baidu.com/it/u=1821127123,1149655687&fm=3028&app=3028&f=JPEG&fmt=auto?w=720&h=1280'
+  )
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
 </script>

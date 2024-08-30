@@ -1,15 +1,46 @@
-function num(n) {
-  console.log(n)
+// function num(n) {
+//   // 创建一个对象来保存当前的值和方法
+//   const calculator = {
+//     value: n,
+//     // 加法
+//     add(num) {
+//       this.value += num;
+//       return this;
+//     },
+//     // 减法
+//     minus(num) {
+//       this.value -= num;
+//       return this;
+//     },
+//     // 在需要获取最终结果时进行隐式类型转换
+//     valueOf() {
+//       return this.value;
+//     }
+//   };
+
+//   return calculator;
+// }
+
+class Num {
+  constructor(n) {
+    this.value = n
+  }
+  add(num) {
+    this.value = this.value + num
+    return this
+  }
+  minus(num) {
+    this.value = this.value - num
+    return this
+  }
 }
-num.prototype.add = function (n) {
-  console.log()
-  return this + n
+function num(n) {
+  return new Num(n)
 }
 
-num.prototype.minus = function (n) {
-  return this - n
-}
-num(1).add(1).minus(1).add(1)
+// 使用示例
+console.log(num(1).add(2).minus(1).add(1).value); // 输出: 3
+
 
 // 目标
 // 实现一个 query 方法，实现对数据的链式查询和处理

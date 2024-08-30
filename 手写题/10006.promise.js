@@ -79,12 +79,12 @@ const promise = new Promise((resolve, reject) => {
 
 
 async function test() {
-  const one=()=>{return new Promise((resolve, reject) => { setTimeout(() => { let a = 1;res=a;resolve(res) }, 1000) })}
-  let data=await one()
+  const one = () => { return new Promise((resolve, reject) => { setTimeout(() => { let a = 1; res = a; resolve(res) }, 1000) }) }
+  let data = await one()
   return data
 }
-test((res)=>{
-  console.log(111,res)
+test((res) => {
+  console.log(111, res)
 })
 // test().then(res=>{
 //   console.log(res)

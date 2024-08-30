@@ -33,7 +33,6 @@ var twoSum = function (nums, target) {
     }
     hashMap.set(nums[i], i)
   }
-
 };
 
 // O(n)
@@ -45,9 +44,7 @@ var twoSum = function (nums, target) {
       ret.push(exist[target - nums[i]] - 1)
       ret.push(i)
     }
-
     exist[nums[i]] = i + 1
-    console.log(exist)
   }
   return ret
 }
