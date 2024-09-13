@@ -21,18 +21,18 @@
  * @param {string[]} strs
  * @return {string[][]}
  */
-// var groupAnagrams = function (strs) {
-//   let hashMap = new Map()
-//   for (let i = 0; i < strs.length; i++) {
-//     let key = Array.from(strs[i]).sort().toString()
-//     if (hashMap.has(key)) {
-//       let value = hashMap.get(key).concat(strs[i])
-//       hashMap.set(key, value)
-//     } else
-//       hashMap.set(key, [strs[i]])
-//   }
-//   return Array.from(hashMap.values())
-// };
+var groupAnagrams = function (strs) {
+  let hashMap = new Map()
+  for (let i = 0; i < strs.length; i++) {
+    let key = Array.from(strs[i]).sort().toString()
+    if (hashMap.has(key)) {
+      let value = hashMap.get(key).concat(strs[i])
+      hashMap.set(key, value)
+    } else
+      hashMap.set(key, [strs[i]])
+  }
+  return Array.from(hashMap.values())
+};
 
 
 // 将字符串的每一位通过charCodeAt()方法转换为数字，遍历字符串构成一个长度26，以字母代表的数字为下标，出现次数为值的数组

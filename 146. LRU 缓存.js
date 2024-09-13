@@ -60,19 +60,13 @@ class LRUCache {
   }
 
   /** 
- * @param {number} key
- * @return {number}
- */
+   * @param {number} key
+   * @return {number}
+  */
   get(key) {
     let node = this.getNode(key)
     return node ? node.value : -1
   }
-
-  /** 
- * @param {number} key 
- * @param {number} value
- * @return {void}
- */
 
   /**
    * hash表中查找 如果存在的话就更改值 不存在的话就set进hash表中
