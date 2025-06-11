@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>打工人倒计时</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "Arial", sans-serif;
+      color: limegreen;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding-top: 60px;
+      color: limegreen;
+    }
+
+    .title {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .timer {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid limegreen;
+      border-radius: 12px;
+      padding: 20px 30px;
+      min-width: 200px;
+      box-shadow: 0 0 10px limegreen;
+    }
+
+    .timer .emoji {
+      font-size: 32px;
+    }
+
+    .timer h2 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .timer span {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+
+  <div class="content">
+    <div class="title">下午好，打工人！</div>
+    <div class="quote">"不想上班，但又不想没钱，好难啊"</div>
+    <div class="container">
+      <div class="timer">
+        <div class="emoji">🏃</div>
+        <h2>距离下班</h2>
+        <span id="offwork"></span>
+      </div>
+      <div class="timer">
+        <div class="emoji">🎉</div>
+        <h2>距离周末</h2>
+        <span id="weekend"></span>
+      </div>
+      <div class="timer">
+        <div class="emoji">💰</div>
+        <h2>距离发工资日</h2>
+        <span id="salary"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Matrix 背景动画
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+
+    // 倒计时逻辑
+    function updateCountdowns() {
+      const now = new Date();
+
+      // 下班时间：工作日 18:00
+      let offwork = new Date();
+      offwork.setHours(18, 0, 0, 0);
+      if (now > offwork || now.getDay() === 0 || now.getDay() === 6) {
+        // 如果已下班或是周末，跳到下一个工作日
+        do {
+          offwork.setDate(offwork.getDate() + 1);
+        } while (offwork.getDay() === 0 || offwork.getDay() === 6);
+        offwork.setHours(18, 0, 0, 0);
+      }
+
+      // 周末时间（周五18:00）
+      let weekend = new Date();
+      const day = weekend.getDay();
+      let diff = 5 - day;
+      if (day >= 6) diff += 7; // 如果是周六或周日，跳到下周五
+      weekend.setDate(weekend.getDate() + diff);
+      weekend.setHours(18, 0, 0, 0);
+
+      // 发工资时间：每月最后一天
+      let salary = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+      salary.setHours(0, 0, 0, 0);
+
+      const format = (t) => {
+        const total = t / 1000;
+        const days = Math.floor(total / 86400);
+        const hours = Math.floor((total % 86400) / 3600);
+        const mins = Math.floor((total % 3600) / 60);
+        const secs = Math.floor(total % 60);
+        return `${days > 0 ? days + "天 " : ""}${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      };
+
+      document.getElementById("offwork").textContent = format(offwork - now);
+      document.getElementById("weekend").textContent = format(weekend - now);
+      document.getElementById("salary").textContent = format(salary - now);
+    }
+
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);
+  </script>
+</body>
+</html>

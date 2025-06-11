@@ -37,3 +37,30 @@ var merge = function(intervals) {
 
 console.log(merge([[1,3],[2,6],[8,10],[15,18]]))
 // console.log(merge([[1,4],[4,5]]))
+
+
+
+var merge = function(intervals) {
+    // 根据区间前面的数字进行排序
+    intervals.sort((a,b)=>a[0]-b[0])
+    console.log(intervals);
+    let result = []
+    result.push(intervals[0])
+    for(let i=1;i<intervals.length;i++){
+        let resultLen=result.length
+        let prev=result[resultLen-1][1]
+        let curr=intervals[i][0]
+        if(prev>=curr){
+            result[resultLen-1]=[result[resultLen-1][0],Math.max(prev,intervals[i][1])]
+        }else {
+            result.push(intervals[i])
+        }
+    }
+    return result
+};
+// @lc code=end
+
+console.log(merge([[1,3],[2,6],[8,10],[15,18]]))
+console.log(merge([[1,4],[4,5]]))
+console.log(merge([[1,4],[0,4]]))
+console.log(merge([[1,4],[2,3]]))
