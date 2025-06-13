@@ -1,45 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>创建快捷方式</title>
   </head>
   <body>
-    <div class="bfc">
-      <div class="float"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-    </div>
+    创建快捷方式：<a
+      href="javascript:void(0);"
+      onclick="shoucang('juejin','.url','https://juejin.cn/')"
+      >点击创建</a
+    >
+    <script type="text/javascript">
+      //var shortcutname="juejin";
+      //var httpurl = 'https://juejin.cn/';
+      //var scriptstr = '[InternetShortcut]'+'\n'+'URL='+httpurl;
+      function shoucang(a, b, c) {
+        const d = '' + a + b
+        const e = '[InternetShortcut]' + '\n' + 'URL=' + c
+        saveToDesktop(d, e)
+      }
+    </script>
 
-    <div class="float"></div>
-    <div class="bfc">
-      <div class="float"></div>
-      <div class="clear"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-    </div>
-    <style>
-      .bfc {
-        margin: 40px;
-        display: inline-block;
+    <script type="text/javascript">
+      /**
+       * [
+       *     saveToDesktop
+       *     IE:可以将数据写进文件并保存到桌面；
+       *     fireFox:可以选择路径将写进数据的文件保存；
+       *     chrome:只能保存到浏览器指定的下载目录下；
+       * ]
+       * @param  {[string]} fileName [文件名 如："test.txt"]
+       * @param  {[string]} data     [数据 如："username:key \r\n password:123456"]
+       */
+      function saveToDesktop(fileName, data) {
+        const explorer = navigator.userAgent.toLowerCase()
+        if (explorer.indexOf('trident') > 0) {
+          // IE 5+ 浏览器
+          const wss = new ActiveXObject('WScript.Shell')
+          const desktopUrl = wss.SpecialFolders('Desktop')
+          const fso = new ActiveXObject('Scripting.FileSystemObject')
+          const tf = fso.CreateTextFile(desktopUrl + '\\' + fileName, true)
+          tf.Write(data)
+          tf.Close()
+        } else {
+          // fireFox chrome 浏览器
+          const urlObj = window.URL || window.webkitURL || window
+          const blob = new Blob([data])
+          const link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+          link.href = urlObj.createObjectURL(blob)
+          link.download = fileName
+          saveClick(link)
+        }
+
+        function saveClick(obj) {
+          const e = document.createEvent('MouseEvents')
+          e.initMouseEvent(
+            'click',
+            true,
+            false,
+            window,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+            false,
+            false,
+            false,
+            0,
+            null
+          )
+          obj.dispatchEvent(e)
+        }
       }
-      .float {
-        float: left;
-        height: 100px;
-        width: 100px;
-        background: red;
-      }
-      .box {
-        height: 100px;
-        width: 100px;
-        margin: 20px;
-        background: #000;
-      }
-      /* .clear {
-        clear: both;
-      } */
-    </style>
+    </script>
   </body>
 </html>
