@@ -38,6 +38,16 @@ var isHappy = function(n) {
   return true;
 };
 // @lc code=end
+var isHappy2 = function(n) {
+    let temp=n
+    const set=new Set()
+    while(temp!==1) {
+        if(set.has(temp)) return false
+        set.add(temp)
+        temp=temp.toString().split('').reduce((pre,cur)=>pre+cur**2,0)
+    }
+    return temp===1
+};
 
 console.log(isHappy(19));//true
 console.log(isHappy(7)); //true

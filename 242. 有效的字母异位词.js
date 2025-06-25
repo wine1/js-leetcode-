@@ -61,6 +61,33 @@ var isAnagram2 = function(s, t) {
   }
   return true;
 };
+
+
+var isAnagram3 = function(s, t) {
+    if(s.length!==t.length) return false
+    let res=true
+    const hash=new Map()
+    for(let i=0;i<s.length;i++){
+        if(hash.has(s[i])) {
+            hash.set(s[i],hash.get(s[i])+1)
+        }else{
+            hash.set(s[i],1)
+        }
+    }
+
+    for(let i=0;i<t.length;i++) {
+        if(hash.has(t[i])) {
+            let count=hash.get(t[i])
+            if(count===0) {
+                res=false
+            }
+            hash.set(t[i],hash.get(t[i])-1)
+        }else{
+            res=false
+        }
+    }
+    return res
+};
 // @lc code=end
 
 log(isAnagram("anagram", "nagaram"));
