@@ -22,6 +22,29 @@ var maxSlidingWindow = function (nums, k) {
   return res
 };
 
+
+
+// queue 记录的是数组下标
+var maxSlidingWindow = function(nums, k) {
+    const queue=[]
+    const res=[]
+    for(let i=0;i<nums.length;i++) {
+        while(queue.length && nums[queue[queue.length-1]]<nums[i]) {
+            queue.pop()
+        }
+        queue.push(i)
+
+        if(queue[0]<=i-k) {
+            queue.shift()
+        }
+        
+        if(i>=k-1) {
+            res.push(nums[queue[0]])
+        }
+    }
+    return res
+};
+
 console.log('res', maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3))
 console.log('res', maxSlidingWindow([1], 1))
 console.log('res', maxSlidingWindow([7, 2, 4], 2)) // [7, 4]
