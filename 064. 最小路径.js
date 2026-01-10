@@ -29,7 +29,6 @@ var minPathSum = function(grid) {
         }
     }
     return grid[lencol-1][lenrow-1]
-
 };
 
 console.log(minPathSum([[1,3,1],[1,5,1],[4,2,1]]))
